@@ -4,6 +4,11 @@ const mongoose = require('mongoose')
 const PORT = 4000
 const {MONGOURI} = require('./keys')
 
+require('./models/user')
+
+app.use(express.json())
+app.use(require('./routes/auth'))
+
 mongoose.connect(MONGOURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
