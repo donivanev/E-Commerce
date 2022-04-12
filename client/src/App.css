@@ -3,3 +3,18 @@
 nav {
     font-family: 'Indie Flower', cursive;
 }
+
+.brand-logo {
+    left: 20px;
+}
+
+.mycard {
+    margin-top: 30px;
+}
+  
+.auth-card {
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    margin: 10px auto;
+}
