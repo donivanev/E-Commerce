@@ -1,8 +1,9 @@
 import './App.css';
+import NavBar from './components/navbar';
 
 function App() {
   return (
-    <h1>E-Commerce</h1>
+    <NavBar />
   );
 }
 
