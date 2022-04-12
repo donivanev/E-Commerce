@@ -13,7 +13,10 @@ const Home = () => {
                         <p>I am a very simple card.</p>
                     </div>
                     <div class="card-action">
-                        <a href="#">This is a link</a>
+                        <a class="waves-effect waves-light btn" color='red'>
+                            <i class="material-icons right">add_shopping_cart</i>
+                            Add to cart
+                        </a>
                     </div>
                 </div>
             </div>

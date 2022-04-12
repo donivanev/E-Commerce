@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap');
 
 nav {
     font-family: 'Indie Flower', cursive;
@@ -17,4 +17,29 @@ nav {
     text-align: center;
     max-width: 400px;
     margin: 10px auto;
+}
+
+.input-field input[type = text]:focus {
+    border-bottom: 1px solid rgb(110, 121, 238) !important;
+    box-shadow: 0 1px 0 0 rgb(110, 121, 238) !important;
+}   
+
+.center {
+    display: block;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.material-icons {
+    font-size: 100px;
+    color: rgb(0, 0, 0);
+}
+
+.waves-effect{
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 110, 115);
+    margin-right: 0px;
+    font-family: 'Permanent Marker', cursive;
 }
