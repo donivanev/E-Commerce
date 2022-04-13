@@ -4,7 +4,7 @@ const CreateProduct = () => {
     return (
         <div className="card input-field" style={{
             margin: '40px auto', maxWidth: '500px', padding: '20px',
-            textAlign: 'center'
+            textAlign: 'center', marginBottom: '90px'
         }}>
             <input type="text" placeholder="Title" />
             <input type="number" placeholder="Price" min="0" step="0.1"/>

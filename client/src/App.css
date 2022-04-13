@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap');
 
-nav, .header {
+nav, .header, .page-footer {
     font-family: 'Indie Flower', cursive;
 }
 
@@ -8,6 +8,10 @@ nav, .header {
     text-align: center;
     font-size: 60px;
     background-color: rgb(238, 110, 115);
+}
+
+.page-footer {
+    font-size: 20px;
 }
 
 .brand-logo {
@@ -23,6 +27,7 @@ nav, .header {
     text-align: center;
     max-width: 400px;
     margin: 10px auto;
+    margin-bottom: 90px;
 }
 
 .input-field input:focus {
