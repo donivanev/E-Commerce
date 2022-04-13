@@ -41,6 +41,9 @@ const Signup = () => {
                 navigate('/signin')
             }
         })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     return (
