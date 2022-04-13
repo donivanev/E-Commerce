@@ -3,12 +3,12 @@ import React from 'react'
 const CreateProduct = () => {
     return (
         <div className="card input-field" style={{
-            margin: '10px auto', maxWidth: '500px', padding: '20px',
+            margin: '40px auto', maxWidth: '500px', padding: '20px',
             textAlign: 'center'
         }}>
-            <input type="text" placeholder="title" />
-            <input type="number" placeholder="price" min="0" />
-            <input type="text" placeholder="description" />
+            <input type="text" placeholder="Title" />
+            <input type="number" placeholder="Price" min="0" step="0.1"/>
+            <input type="text" placeholder="Description" />
             <input list="products"/>
             <datalist id="products">
                 <option value="Appliances" />
