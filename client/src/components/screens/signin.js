@@ -8,6 +8,8 @@ const Signin = () => {
                 <h2>Sign in</h2>
                 <input type="text" placeholder="email" /*value={email} onChange={(e) => setEmail(e.target.value)}*/ />
                 <input type="text" placeholder="password" /*value={password} onChange={(e) => setPassword(e.target.value)}*/ />
+                <br/>
+                <br/>
                 <button className="btn waves-effect waves-light" style={{backgroundColor: '#ee6e73'}} /*onClick={() => PostData()}*/>Sign in</button>
                 <h5>
                     <Link to="/signup" style={{color: '#6e79ee'}}>Don't have an account?</Link>

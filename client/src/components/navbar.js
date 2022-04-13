@@ -10,6 +10,7 @@ const NavBar = () => {
                     <li><Link to="/signup" style={{fontSize: '25px'}}>Sign up</Link></li>
                     <li><Link to="/signin" style={{fontSize: '25px'}}>Sign in</Link></li>
                     <li><Link to="/profile" style={{fontSize: '25px'}}>Profile</Link></li>
+                    <li><Link to="/create" style={{fontSize: '25px'}}>Create</Link></li>
                     <li><Link to="/signout" style={{fontSize: '25px'}}>Sign out</Link></li>
                 </ul>
             </div>

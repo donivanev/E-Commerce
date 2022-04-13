@@ -5,6 +5,7 @@ import Home from './components/screens/home'
 import Signup from './components/screens/signup'
 import Signin from './components/screens/signin'
 import Profile from './components/screens/profile'
+import CreateProduct from './components/screens/create'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/signin" element={<Signin />}></Route>
         <Route exact path="/signup" element={<Signup />}></Route>
         <Route exact path="/profile" element={<Profile />}></Route>
+        <Route exact path="/create" element={<CreateProduct />}></Route>
       </Routes>
     </BrowserRouter>
   );
