@@ -5,7 +5,7 @@ const NavBar = () => {
     return (
         <nav>
             <div className="nav-wrapper">
-                <Link to="/" className="brand-logo left" style={{fontSize: '35px'}}>E-Commerce</Link>
+                <Link to="/" className="brand-logo left" style={{fontSize: '35px'}}>Home</Link>
                 <ul id="nav-mobile" className="right">
                     <li><Link to="/signup" style={{fontSize: '25px'}}>Sign up</Link></li>
                     <li><Link to="/signin" style={{fontSize: '25px'}}>Sign in</Link></li>

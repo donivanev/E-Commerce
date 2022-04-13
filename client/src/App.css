@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Permanent+Marker&display=swap');
 
-nav {
+nav, .header {
     font-family: 'Indie Flower', cursive;
+}
+
+.header {
+    text-align: center;
+    font-size: 60px;
+    background-color: rgb(238, 110, 115);
 }
 
 .brand-logo {
@@ -49,4 +55,29 @@ nav {
     top: 30px !important;
     right: 20px !important;
     left: auto !important;
+}
+
+.card {
+    top: 30px !important;
+    bottom: 30px !important;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+header {
+    background-color:rgb(238, 110, 115);
+}
+
+.shoppingCart {
+    width: 5%;
+    height: auto;
+    margin-left: 30px;
 }

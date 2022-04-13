@@ -9,7 +9,7 @@ const CreateProduct = () => {
             <input type="text" placeholder="Title" />
             <input type="number" placeholder="Price" min="0" step="0.1"/>
             <input type="text" placeholder="Description" />
-            <input list="products"/>
+            <input list="products" placeholder="Category"/>
             <datalist id="products">
                 <option value="Appliances" />
                 <option value="Books" />
