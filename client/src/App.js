@@ -1,11 +1,12 @@
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import NavBar from './components/navbar'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './components/screens/home'
 import Signup from './components/screens/signup'
 import Signin from './components/screens/signin'
 import Profile from './components/screens/profile'
-import CreateProduct from './components/screens/create'
+import CreateProduct from './components/screens/create' 
 
 function App() {
   return (

@@ -8,7 +8,7 @@ const Home = () => {
                     <div class="card-image">
                         <img src="https://www.pngitem.com/pimgs/m/325-3256461_our-product-range-icon-vector-shopping-cart-hd.png" 
                              alt="Not available."/>
-                        <span class="card-title">Card Title</span>
+                        <span className="card-title">Card Title</span>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card.</p>

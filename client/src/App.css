@@ -43,3 +43,9 @@ nav {
     margin-right: 0px;
     font-family: 'Permanent Marker', cursive;
 }
+
+#toast-container {
+    top: 30px !important;
+    right: 20px !important;
+    left: auto !important;
+}
