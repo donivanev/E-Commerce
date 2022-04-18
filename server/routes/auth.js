@@ -76,7 +76,9 @@ router.post('/signin', (req, res) => {
             if(doMatch) {
                 //res.json({message: 'Successfully signed in.'})
                 const token = jwt.sign({_id: savedUser._id}, JWT_SECRET)
-                res.json({token})
+                const {_id, firstName, lastName, password, email} = savedUser
+
+                res.json({token, user: {_id, firstName, lastName, password, email}})
             }
             else {
                 return res.status(422).json({error: 'Invalid password!'})
@@ -87,5 +89,9 @@ router.post('/signin', (req, res) => {
         })
     })
 })
+
+/*router.post('/signout', (req, res) => {
+    
+})*/
 
 module.exports = router

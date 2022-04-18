@@ -38,7 +38,7 @@ const Routing = () => {
         <Route exact path="/signup" element={<Signup />}></Route>
         <Route exact path="/profile" element={<Profile />}></Route>
         <Route exact path="/createproduct" element={<CreateProduct />}></Route>
-        <Route exact path="/signout" element={<CreateProduct />}></Route>
+        <Route exact path="/signout" element={<Home />}></Route>
       </Routes>
   )
 }
