@@ -5,12 +5,14 @@ import { UserContext } from '../App'
 const NavBar = () => {
 
     const {state, dispatch} = useContext(UserContext)
+
     const renderList = () => {
         if (state) {
             return [
                 <li><Link to="/profile" style={{fontSize: '25px'}}>Profile</Link></li>,
                 <li><Link to="/createproduct" style={{fontSize: '25px'}}>Create</Link></li>,
-                <li><Link to="/signout" style={{fontSize: '25px'}}>Sign out</Link></li>
+                <li><Link to="/signin" style={{fontSize: '25px'}} onClick={() => {localStorage.clear()
+                    dispatch({type: 'CLEAR'});}}>Sign out</Link></li>
             ]
         }
         else {
