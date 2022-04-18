@@ -7,7 +7,7 @@ import Home from './components/screens/home'
 import Signup from './components/screens/signup'
 import Signin from './components/screens/signin'
 import Profile from './components/screens/profile'
-import CreateProduct from './components/screens/create' 
+import CreateProduct from './components/screens/createproduct' 
 import Footer from './components/footer'
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/signin" element={<Signin />}></Route>
         <Route exact path="/signup" element={<Signup />}></Route>
         <Route exact path="/profile" element={<Profile />}></Route>
-        <Route exact path="/create" element={<CreateProduct />}></Route>
+        <Route exact path="/createproduct" element={<CreateProduct />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

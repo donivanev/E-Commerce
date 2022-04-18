@@ -63,8 +63,7 @@ nav, .header, .page-footer {
 }
 
 .card {
-    top: 30px !important;
-    bottom: 30px !important;
+    top: 15px !important;
 }
 
 body {
