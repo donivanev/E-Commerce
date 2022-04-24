@@ -85,3 +85,7 @@ header {
     height: auto;
     margin-left: 30px;
 }
+
+h4 {
+    text-align: center;
+}

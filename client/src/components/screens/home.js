@@ -20,15 +20,14 @@ const Home = () => {
                         return (
                             <div className="col s12 m3">
                                 <div className="card">
+                                <h4 className="card-title">{item.title}</h4>
                                     <div className="card-image">
-                                        <img src={item.image}
-                                            alt="Not available." />
-                                        <span className="card-title">{item.title}</span>
+                                        <img src={item.image} alt="Not available." />
                                     </div>
                                     <div className="card-content">
-                                        <p>{item.price}</p>
+                                        <p style={{fontWeight: "bold"}}>{item.price}$</p>
                                         <p>{item.category}</p>
-                                        <p>Description</p>
+                                        <p>{item.description}</p>
                                     </div>
                                     <div className="card-action">
                                         <a href='/' className="waves-effect waves-light btn" color='red'>
