@@ -82,8 +82,7 @@ const Home = () => {
                                     {
                                         item.comments.map(record => {
                                             return(<h6>
-                                                    <span style={{fontWeight: '500'}}>{record.comments}</span> 
-                                                    {record.text}
+                                                    <span style={{fontWeight: '500'}}>{record.commentedBy.firstName}</span> {record.text}
                                                    </h6>)
                                         })
                                     }
