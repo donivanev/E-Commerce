@@ -12,6 +12,49 @@ const Home = () => {
             })
     }, [])
 
+    const makeComment = (text, postId) => {
+        fetch('/comment', {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+            },
+            body: JSON.stringify({
+                postId,
+                text
+            })
+        })
+        .then(res => res.json())
+        .then(result => {
+            const newData = data.map(item => {
+                if (item._id === result._id) {
+                    return result
+                }
+                else {
+                    return item
+                }
+            })
+            
+            setData(newData)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    // const deleteProduct = (productId) => {
+    //     fetch(`/deleteproduct/${productId}`, {
+    //         method: 'delete',
+    //         headers: {
+    //             Authorization: 'Bearer ' + localStorage.getItem('jwt')
+    //         }
+    //     })
+    //     .then(res => res.json())
+    //     .then(result => {
+    //         console.log(result)
+    //     })
+    // }
+
     return (
         <div className="row">
             <div className="home">
@@ -35,7 +78,22 @@ const Home = () => {
                                             Add to cart
                                         </a>
                                     </div>
-                                </div>
+                                    <p></p>
+                                    {
+                                        item.comments.map(record => {
+                                            return(<h6>
+                                                    <span style={{fontWeight: '500'}}>{record.comments}</span> 
+                                                    {record.text}
+                                                   </h6>)
+                                        })
+                                    }
+                                    <form onSubmit={(e) => { 
+                                        e.preventDefault() 
+                                        makeComment(e.target[0].value, item._id)
+                                    }}>
+                                        <input type='text' placeholder='Add a comment...'/>
+                                    </form>
+                                    </div>
                             </div>
                         )
                     })

@@ -4,7 +4,6 @@ import { UserContext } from '../../App'
 const Profile = () => {
 
     const {state, dispatch} = useContext(UserContext)
-    console.log(state)
 
     return (
         <div>
