@@ -42,18 +42,23 @@ const Home = () => {
         })
     }
 
-    // const deleteProduct = (productId) => {
-    //     fetch(`/deleteproduct/${productId}`, {
-    //         method: 'delete',
-    //         headers: {
-    //             Authorization: 'Bearer ' + localStorage.getItem('jwt')
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(result => {
-    //         console.log(result)
-    //     })
-    // }
+    const deleteProduct = (productId) => {
+        fetch(`/deleteproduct/${productId}`, {
+            method: 'delete',
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('jwt')
+            }
+        })
+        .then(res => res.json())
+        .then(result => {
+            console.log(result)
+            const newData = data.filter(item => {
+                return item._id !== result
+            })
+
+            setData(newData)
+        })
+    }
 
     return (
         <div className="row">
@@ -62,8 +67,11 @@ const Home = () => {
                     data.map(item => {
                         return (
                             <div className="col s12 m3">
-                                <div className="card">
-                                <h4 className="card-title">{item.title}</h4>
+                                <div className="card" key={item._id}>
+                                <h4 className="card-title">{item.title}
+                                    <i className='material-icons' style={{float: 'right', fontSize: '35px', color: 'red'}}
+                                       onClick={() => deleteProduct(item._id)}>delete_forever</i>
+                                </h4>
                                     <div className="card-image">
                                         <img src={item.image} alt="Not available." />
                                     </div>

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { ObjectId } = mongoose.Schema.Types
 
 const ProductSchema = mongoose.Schema({
     title: {
@@ -24,6 +25,14 @@ const ProductSchema = mongoose.Schema({
     dateAdded: {
         type: Date,
         default: Date.now
+    },
+    comments: [{
+        text: String,
+        commentedBy: {type: ObjectId, ref: 'User'}
+    }],
+    commentedBy: {
+        type: ObjectId,
+        ref: 'User'
     }
 })
 
