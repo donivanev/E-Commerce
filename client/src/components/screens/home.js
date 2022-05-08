@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import M from 'materialize-css'
 
 const Home = () => {
 
@@ -51,7 +52,7 @@ const Home = () => {
         })
         .then(res => res.json())
         .then(result => {
-            console.log(result)
+            M.toast({ html: 'Successfully deleted!', classes: "#43a047 green darken-1" })
             const newData = data.filter(item => {
                 return item._id !== result
             })
