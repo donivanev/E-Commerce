@@ -9,16 +9,16 @@ const NavBar = () => {
     const renderList = () => {
         if (state) {
             return [
-                <li><Link to="/profile" style={{fontSize: '25px'}}>Profile</Link></li>,
-                <li><Link to="/createproduct" style={{fontSize: '25px'}}>Create</Link></li>,
-                <li><Link to="/signin" style={{fontSize: '25px'}} onClick={() => {localStorage.clear()
+                <li key='1'><Link to={'/profile/' + state._id} style={{fontSize: '25px'}}>Profile</Link></li>,
+                <li key='2'><Link to="/createproduct" style={{fontSize: '25px'}}>Create</Link></li>,
+                <li key='3'><Link to="/signin" style={{fontSize: '25px'}} onClick={() => {localStorage.clear()
                     dispatch({type: 'CLEAR'});}}>Sign out</Link></li>
             ]
         }
         else {
             return [
-                <li><Link to="/signup" style={{fontSize: '25px'}}>Sign up</Link></li>,
-                <li><Link to="/signin" style={{fontSize: '25px'}}>Sign in</Link></li>
+                <li key='4'><Link to="/signup" style={{fontSize: '25px'}}>Sign up</Link></li>,
+                <li key='5'><Link to="/signin" style={{fontSize: '25px'}}>Sign in</Link></li>
             ]
         }
     }

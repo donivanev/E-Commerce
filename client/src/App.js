@@ -32,10 +32,10 @@ const Routing = () => {
   return (
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/signin" element={<Signin />}></Route>
-        <Route exact path="/signup" element={<Signup />}></Route>
-        <Route exact path="/profile" element={<Profile />}></Route>
-        <Route exact path="/createproduct" element={<CreateProduct />}></Route>
+        <Route path="/signin" element={<Signin />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/profile/:userId" element={<Profile />}></Route>
+        <Route path="/createproduct" element={<CreateProduct />}></Route>
       </Routes>
   )
 }
