@@ -6,7 +6,7 @@ const Product = mongoose.model('Product')
 
 router.get('/allproducts', (req, res) => {
     Product.find()
-    .populate("commentedBy","_id firstName")
+    .populate('commentedBy','_id firstName')
     .populate('comments.commentedBy', '_id firstName')
     .then(products => {
         res.json({products})
@@ -63,12 +63,11 @@ router.put('/comment', requireLogin, (req, res) => {
 
 router.delete('/deleteproduct/:productId', requireLogin, (req, res) => {
     Product.findOne({_id: req.params.productId})
-    .populate('createdBy', '_id')
     .exec((err, product) => {
         if (err || !product) {
             return res.status(422).json({error: err})
         }
-        if (product.createdBy._id.toString() === req.user._id.toString()) {
+    //     if (product.createdBy._id.toString() === req.user._id.toString()) {
             product.remove()
             .then(result => {
                 res.json({message: 'Successfully deleted.'})
@@ -76,7 +75,7 @@ router.delete('/deleteproduct/:productId', requireLogin, (req, res) => {
             .catch(err => {
                 console.log(err)
             })
-        }
+    //     }
     })
 })
 

@@ -61,18 +61,61 @@ const Home = () => {
             })
     }
 
+    const uncheck = () => {
+        document.querySelectorAll('input[type="checkbox"]').forEach(input => {input.className = ''; input.checked = ''})
+    }
+
+    const sortByName = () =>  {
+
+        uncheck()
+
+        const sortByName = [...data]
+        sortByName.sort((a, b) => a.title > b.title ? 1 : -1)
+        setData(sortByName)
+
+        const nameCheckBox = document.getElementById('1')
+        nameCheckBox.className = 'filled-in'
+        nameCheckBox.checked = 'checked'
+    }
+
+    const sortByPrice = () =>  {
+
+        uncheck()
+
+        const sortByPrice = [...data]
+        sortByPrice.sort((a, b) => a.price > b.price ? 1 : -1)
+        setData(sortByPrice)
+
+        const priceCheckBox = document.getElementById('2')
+        priceCheckBox.className = 'filled-in'
+        priceCheckBox.checked = 'checked'
+    }
+
+    const sortByCategory = () =>  {
+
+        uncheck()
+
+        const sortByCategory = [...data]
+        sortByCategory.sort((a, b) => a.category > b.category ? 1 : -1)
+        setData(sortByCategory)
+
+        const categoryCheckBox = document.getElementById('3')
+        categoryCheckBox.className = 'filled-in'
+        categoryCheckBox.checked = 'checked'
+    }
+
     return (
         <div className="row">
             <div className="home">
                 <form action="#">
                     <p>
                         <span style={{marginLeft: "10px", marginRight: "30px", fontSize: "20px"}}>Sort by:</span>
-                        <input type="checkbox" />
-                        <span style={{marginRight: "30px"}}>Name</span>
-                        <input type="checkbox" />
-                        <span style={{marginRight: "30px"}}>Price</span>
-                        <input type="checkbox" class="filled-in" checked="checked"/>
-                        <span>Category</span>
+                        <input type="checkbox" id='1'/>
+                        <span style={{marginRight: "30px"}} onClick={() => sortByName()}>Name</span>
+                        <input type="checkbox" id='2'/>
+                        <span style={{marginRight: "30px"}} onClick={() => sortByPrice()}>Price</span>
+                        <input type="checkbox" id='3'/>
+                        <span onClick={() => sortByCategory()}>Category</span>
                     </p>
                 </form>
                 {

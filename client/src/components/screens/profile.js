@@ -1,24 +1,9 @@
-import React, { useEffect, useContext, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext } from 'react'
 import { UserContext } from '../../App'
 
 const Profile = () => {
 
-    //const [userProfile, setProfile] = useState(null)
     const {state, dispatch} = useContext(UserContext)
-    //const {userId} = useParams()
-
-    // useEffect(() => {
-    //     fetch(`/user/${userId}`, {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('jwt')
-    //         }
-    //     })
-    //     .then(res => res.json())
-    //     .then(result => {
-    //         setProfile(result)
-    //     })
-    // }, [])
 
     return (
         <div>

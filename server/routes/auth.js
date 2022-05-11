@@ -90,8 +90,4 @@ router.post('/signin', (req, res) => {
     })
 })
 
-/*router.post('/signout', (req, res) => {
-    
-})*/
-
 module.exports = router
