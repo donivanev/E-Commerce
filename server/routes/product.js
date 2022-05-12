@@ -61,6 +61,23 @@ router.put('/comment', requireLogin, (req, res) => {
     })
 })
 
+router.put('/editproduct/:productId', requireLogin, (req, res) => {
+    Product.findOne({_id: req.params.productId})
+    .exec((err, product) => {
+        if (err || !product) {
+            return res.status(422).json({error: err})
+        }
+
+        product.remove()
+        .then(result => {
+            res.json({message: 'Successfully edited.'})
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    })
+})
+
 router.delete('/deleteproduct/:productId', requireLogin, (req, res) => {
     Product.findOne({_id: req.params.productId})
     .exec((err, product) => {

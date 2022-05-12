@@ -28,7 +28,8 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     },
     avatar: {
-        type: String
+        type: String,
+        default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAZyFdywMPXJlTpPImDs4x5RkRvjCqAk6tsA&usqp=CAU'
     }
 })
 

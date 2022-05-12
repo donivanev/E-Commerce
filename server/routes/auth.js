@@ -16,7 +16,7 @@ router.get('/protected', requireLogin, (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-    const {firstName, lastName, password, email, registerDate} = req.body
+    const {firstName, lastName, password, email, registerDate, avatar} = req.body
 
     if (!firstName || !lastName || !password || !email) {
         return res.status(422).json({error: 'Please fill all the fields!'})
@@ -39,7 +39,8 @@ router.post('/signup', (req, res) => {
                 lastName,
                 password: hashedPassword,
                 email,
-                registerDate
+                registerDate,
+                avatar: avatar
             })
     
             user.save()
@@ -76,9 +77,9 @@ router.post('/signin', (req, res) => {
             if(doMatch) {
                 //res.json({message: 'Successfully signed in.'})
                 const token = jwt.sign({_id: savedUser._id}, JWT_SECRET)
-                const {_id, firstName, lastName, password, email} = savedUser
+                const {_id, firstName, lastName, password, email, avatar} = savedUser
 
-                res.json({token, user: {_id, firstName, lastName, password, email}})
+                res.json({token, user: {_id, firstName, lastName, password, email, avatar}})
             }
             else {
                 return res.status(422).json({error: 'Invalid password!'})
