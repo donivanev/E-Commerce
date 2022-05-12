@@ -58,14 +58,33 @@ const Home = () => {
                 })
 
                 setData(newData)
+                window.location.reload()
+            })
+    }
+
+    const editProduct = (productId) => {
+        fetch(`/editproduct/${productId}`, {
+            method: 'put',
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('jwt')
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+                M.toast({ html: 'Successfully edited!', classes: "#43a047 green darken-1" })
+                const newData = data.filter(item => {
+                    return item._id !== result
+                })
+
+                setData(newData)
             })
     }
 
     const uncheck = () => {
-        document.querySelectorAll('input[type="checkbox"]').forEach(input => {input.className = ''; input.checked = ''})
+        document.querySelectorAll('input[type="checkbox"]').forEach(input => { input.className = ''; input.checked = '' })
     }
 
-    const sortByName = () =>  {
+    const sortByName = () => {
 
         uncheck()
 
@@ -78,7 +97,7 @@ const Home = () => {
         nameCheckBox.checked = 'checked'
     }
 
-    const sortByPrice = () =>  {
+    const sortByPrice = () => {
 
         uncheck()
 
@@ -91,7 +110,7 @@ const Home = () => {
         priceCheckBox.checked = 'checked'
     }
 
-    const sortByCategory = () =>  {
+    const sortByCategory = () => {
 
         uncheck()
 
@@ -109,13 +128,14 @@ const Home = () => {
             <div className="home">
                 <form action="#">
                     <p>
-                        <span style={{marginLeft: "10px", marginRight: "30px", fontSize: "20px"}}>Sort by:</span>
-                        <input type="checkbox" id='1'/>
-                        <span style={{marginRight: "30px"}} onClick={() => sortByName()}>Name</span>
-                        <input type="checkbox" id='2'/>
-                        <span style={{marginRight: "30px"}} onClick={() => sortByPrice()}>Price</span>
-                        <input type="checkbox" id='3'/>
+                        <span style={{ marginLeft: "10px", marginRight: "30px", fontSize: "20px" }}>Sort by:</span>
+                        <input type="checkbox" id='1' />
+                        <span style={{ marginRight: "30px" }} onClick={() => sortByName()}>Name</span>
+                        <input type="checkbox" id='2' />
+                        <span style={{ marginRight: "30px" }} onClick={() => sortByPrice()}>Price</span>
+                        <input type="checkbox" id='3' />
                         <span onClick={() => sortByCategory()}>Category</span>
+                        <span style={{ float: 'right', marginRight: "50px", fontSize: "20px" }}>Search</span>
                     </p>
                 </form>
                 {
@@ -124,6 +144,8 @@ const Home = () => {
                             <div className="col s12 m3">
                                 <div className="card" key={item._id}>
                                     <h4 className="card-title">{item.title}
+                                        <i className='material-icons' style={{ float: 'left', fontSize: '35px', color: 'blue' }}
+                                            onClick={() => editProduct(item._id)}>edit</i>
                                         <i className='material-icons' style={{ float: 'right', fontSize: '35px', color: 'red' }}
                                             onClick={() => deleteProduct(item._id)}>delete_forever</i>
                                     </h4>
@@ -150,10 +172,12 @@ const Home = () => {
                                         })
                                     }
                                     <form onSubmit={(e) => {
+                                        //if you are submitting a form (prevents page reload)
                                         e.preventDefault()
                                         makeComment(e.target[0].value, item._id)
+                                        e.target[0].value = ''
                                     }}>
-                                        <input type='text' placeholder='Add a comment...' />
+                                        <input type='text' placeholder='Add a comment...'/>
                                     </form>
                                 </div>
                             </div>

@@ -9,5 +9,12 @@ export const reducer = (state, action) => {
         return null
     }
 
+    if (action.type === 'UPDATEAVATAR') {
+        return {
+            ...state,
+            avatar: action.payload
+        }
+    }
+
     return state
 }
