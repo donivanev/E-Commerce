@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import EditProduct from './editproduct'
 import M from 'materialize-css'
 
 const Home = () => {
@@ -59,24 +61,6 @@ const Home = () => {
 
                 setData(newData)
                 window.location.reload()
-            })
-    }
-
-    const editProduct = (productId) => {
-        fetch(`/editproduct/${productId}`, {
-            method: 'put',
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('jwt')
-            }
-        })
-            .then(res => res.json())
-            .then(result => {
-                M.toast({ html: 'Successfully edited!', classes: "#43a047 green darken-1" })
-                const newData = data.filter(item => {
-                    return item._id !== result
-                })
-
-                setData(newData)
             })
     }
 
@@ -144,8 +128,8 @@ const Home = () => {
                             <div className="col s12 m3">
                                 <div className="card" key={item._id}>
                                     <h4 className="card-title">{item.title}
-                                        <i className='material-icons' style={{ float: 'left', fontSize: '35px', color: 'blue' }}
-                                            onClick={() => editProduct(item._id)}>edit</i>
+                                        <i className='material-icons' style={{ float: 'left', fontSize: '35px', color: 'blue' }}>
+                                            <Link to={'/editproduct/' + item._id} state={data}>edit</Link></i>
                                         <i className='material-icons' style={{ float: 'right', fontSize: '35px', color: 'red' }}
                                             onClick={() => deleteProduct(item._id)}>delete_forever</i>
                                     </h4>

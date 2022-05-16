@@ -6,7 +6,6 @@ const Profile = () => {
 
     const { state, dispatch } = useContext(UserContext)
     const [image, setImage] = useState("")
-    const [url, setUrl] = useState("")
 
     useEffect(() => {
         if (image) {
@@ -25,10 +24,20 @@ const Profile = () => {
                         M.toast({ html: 'Please upload an image!', classes: "#c62828 red darken-3" })
                     }
                     else {
-                        setUrl(data.url)
-                        localStorage.setItem('user', JSON.stringify({ ...state, avatar: data.url }))
-                        dispatch({ type: 'UPDATEAVATAR', payload: data.url })
-                        window.location.reload()
+                        fetch('/updateavatar', {
+                            method: 'put',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + localStorage.getItem('jwt')
+                            },
+                            body: JSON.stringify({avatar: data.url})
+                        })
+                        .then(res => res.json())
+                        .then(result => {
+                            localStorage.setItem('user', JSON.stringify({...state, avatar: result.avatar}))
+                            dispatch({ type: 'UPDATEAVATAR', payload: result.avatar })
+                            window.location.reload()
+                        })
                     }
                 })
                 .catch(err => {
