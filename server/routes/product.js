@@ -21,7 +21,6 @@ router.get('/allproducts/:productId', (req, res) => {
     .populate('commentedBy','_id firstName')
     .populate('comments.commentedBy', '_id firstName')
     .then(product => {
-        console.log(product);
         res.json({product})
     })
     .catch(err => {

@@ -17,7 +17,7 @@ const EditProduct = () => {
     const [url, setUrl] = useState("")
 
     useEffect(() => {
-        fetch(`/product/${productId}`)
+        fetch(`/allproducts/${productId}`)
             .then(res => res.json())
             .then(result => {
                 setData(result.product)

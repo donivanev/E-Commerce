@@ -89,6 +89,9 @@ router.post('/signin', (req, res) => {
             console.log(err)
         })
     })
+    .catch(err => {
+        console.log(err)
+    })
 })
 
 module.exports = router
