@@ -9,6 +9,7 @@ import Signin from './components/screens/signin'
 import Profile from './components/screens/profile'
 import CreateProduct from './components/screens/createproduct' 
 import EditProduct from './components/screens/editproduct'
+import ProductItem from './components/screens/productitem'
 import Footer from './components/footer'
 import { reducer, initialState } from './reducers/userReducer'
 
@@ -38,6 +39,7 @@ const Routing = () => {
         <Route path='/profile/:userId' element={<Profile />}></Route>
         <Route path='/createproduct' element={<CreateProduct />}></Route>
         <Route path='/editproduct/:productId' element={<EditProduct />}></Route>
+        <Route path='/productitem/:productId' element={<ProductItem />}></Route>
       </Routes>
   )
 }
