@@ -26,4 +26,16 @@ router.get('/user/:id', requireLogin, (req, res) => {
     })
 })
 
+router.put('/updateavatar', requireLogin, (req, res) => {
+    User.findByIdAndUpdate(req.user._id, {
+        $set: {avatar: req.body.avatar}
+    }, {new: true}, (err, result) => {
+        if (err) {
+            return res.status(422).json({error: 'Can\'t change avatar.'})
+        }
+
+        res.json(result)
+    })
+})
+
 module.exports = router

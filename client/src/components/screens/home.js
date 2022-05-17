@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { Rating } from 'react-simple-star-rating'
+import { Link } from 'react-router-dom'
+import { UserContext } from '../../App'
+import { ADMIN_USERNAME, ADMIN_PASSWORD } from '../../../../server/keys'
 import M from 'materialize-css'
 
 const Home = () => {
 
+    const {state, dispatch} = useContext(UserContext)
     const [data, setData] = useState([])
+    const [rating, setRating] = useState(0);
+    console.log(state);
 
     useEffect(() => {
         fetch('/allproducts')
@@ -62,24 +69,6 @@ const Home = () => {
             })
     }
 
-    const editProduct = (productId) => {
-        fetch(`/editproduct/${productId}`, {
-            method: 'put',
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('jwt')
-            }
-        })
-            .then(res => res.json())
-            .then(result => {
-                M.toast({ html: 'Successfully edited!', classes: "#43a047 green darken-1" })
-                const newData = data.filter(item => {
-                    return item._id !== result
-                })
-
-                setData(newData)
-            })
-    }
-
     const uncheck = () => {
         document.querySelectorAll('input[type="checkbox"]').forEach(input => { input.className = ''; input.checked = '' })
     }
@@ -123,6 +112,12 @@ const Home = () => {
         categoryCheckBox.checked = 'checked'
     }
 
+    const handleRating = (rate) => {
+        setRating(rate)
+
+        //TODO
+    }
+
     return (
         <div className="row">
             <div className="home">
@@ -144,18 +139,23 @@ const Home = () => {
                             <div className="col s12 m3">
                                 <div className="card" key={item._id}>
                                     <h4 className="card-title">{item.title}
-                                        <i className='material-icons' style={{ float: 'left', fontSize: '35px', color: 'blue' }}
-                                            onClick={() => editProduct(item._id)}>edit</i>
+                                        { state.firstName === ADMIN_USERNAME && state.password === ADMIN_PASSWORD ?
+                                        <i className='material-icons' style={{ float: 'left', fontSize: '35px', color: 'blue' }}>
+                                            <Link to={'/editproduct/' + item._id} state={data}>edit</Link></i> : '' }
+                                        { state.firstName === ADMIN_USERNAME && state.password === ADMIN_PASSWORD ?
                                         <i className='material-icons' style={{ float: 'right', fontSize: '35px', color: 'red' }}
-                                            onClick={() => deleteProduct(item._id)}>delete_forever</i>
+                                            onClick={() => deleteProduct(item._id)}>delete_forever</i> : '' }
                                     </h4>
                                     <div className="card-image">
-                                        <img src={item.image} alt="Not available." />
+                                        <Link to={'/productitem/' + item._id}>
+                                            <img src={item.image} alt="Not available." />
+                                        </Link>
                                     </div>
                                     <div className="card-content">
                                         <p style={{ fontWeight: "bold" }}>{item.price}$</p>
-                                        <p>{item.category}</p>
+                                        <p><i>{item.category}</i></p>
                                         <p>{item.description}</p>
+                                        <p>Rating: <Rating onClick={handleRating} ratingValue={rating} /></p>
                                     </div>
                                     <div className="card-action">
                                         <a href='/' className="waves-effect waves-light btn" color='red'>
@@ -165,11 +165,15 @@ const Home = () => {
                                     </div>
                                     <p></p>
                                     {
-                                        item.comments.map(record => {
-                                            return (<h6>
-                                                <span style={{ fontWeight: '500' }}>{record.commentedBy.firstName}</span> {record.text}
-                                            </h6>)
-                                        })
+                                        // item.comments.map(record => {
+                                        //     return (<h6>
+                                        //         <span style={{ fontWeight: '500' }}>{record.commentedBy.firstName}</span> {record.text}
+                                        //     </h6>)
+                                        // })
+                                        <h6 style={{ marginLeft: '15px' }}>
+                                            <span style={{ fontWeight: '500' }}> {item.comments[0] ? item.comments[0].commentedBy.firstName : ''} </span> {item.comments[0] ? item.comments[0].text : ''}
+                                            <Link to={'/productitem/' + item._id}><p>Read more ...</p></Link>
+                                        </h6>
                                     }
                                     <form onSubmit={(e) => {
                                         //if you are submitting a form (prevents page reload)
@@ -177,7 +181,7 @@ const Home = () => {
                                         makeComment(e.target[0].value, item._id)
                                         e.target[0].value = ''
                                     }}>
-                                        <input type='text' placeholder='Add a comment...'/>
+                                        <input type='text' placeholder='Add a comment...' id='input-comments' />
                                     </form>
                                 </div>
                             </div>

@@ -33,7 +33,17 @@ nav, .header, .page-footer {
 .input-field input:focus {
     border-bottom: 1px solid rgb(110, 121, 238) !important;
     box-shadow: 0 1px 0 0 rgb(110, 121, 238) !important;
-}   
+}
+
+#input-comments {
+    margin-left: 15px; 
+    width: 280px;
+}
+
+#input-comments:focus {
+    border-bottom: 1px solid rgb(110, 121, 238) !important;
+    box-shadow: 0 1px 0 0 rgb(110, 121, 238) !important;
+}
 
 .center {
     display: block;
@@ -64,6 +74,16 @@ nav, .header, .page-footer {
 
 .card {
     top: 15px !important;
+}
+
+.card-action {
+    text-align: center;
+}
+
+#productCard {
+    margin: 30px;
+    padding: 10px;
+    width: 400px;
 }
 
 body {
