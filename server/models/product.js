@@ -33,6 +33,10 @@ const ProductSchema = mongoose.Schema({
     commentedBy: {
         type: ObjectId,
         ref: 'User'
+    },
+    rating: {
+        type: Number,
+        ref: 'User'
     }
 })
 
